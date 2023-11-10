@@ -29,10 +29,8 @@ if (isset($_SESSION['unique_id'])) {
             </section>
       </div>
       
-      <?php include_once "header.php"; ?>
       <?php include_once "NetworkCheck.php"; ?>
 
-      
       <script src="javascript/pass-show-hide.js"></script>
       <script src="javascript/login.js"></script>
 </body>
