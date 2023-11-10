@@ -27,8 +27,8 @@ if (!isset($_SESSION['unique_id'])) {
                         </div>
                   </header>
                   <div class="chat-box">
-                        
-                        
+
+
                   </div>
                   <form action="#" class="typing-area" autocomplete="off">
                         <input type="text" name="outgoing_id" value="<?php echo $_SESSION['unique_id'] ?>" hidden>
@@ -38,6 +38,7 @@ if (!isset($_SESSION['unique_id'])) {
                   </form>
             </section>
       </div>
+      <?php include_once "NetworkCheck.php"; ?>
 
       <script src="javascript/chat.js"></script>
 </body>

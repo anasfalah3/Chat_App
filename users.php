@@ -12,11 +12,11 @@ if (!isset($_SESSION['unique_id'])) {
             <section class="users">
                   <header>
                         <?php
-                              include_once "php/config.php";
-                              $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$_SESSION['unique_id']}");
-                              if (mysqli_num_rows($sql) > 0) {
-                                    $row = mysqli_fetch_assoc($sql);
-                              }
+                        include_once "php/config.php";
+                        $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$_SESSION['unique_id']}");
+                        if (mysqli_num_rows($sql) > 0) {
+                              $row = mysqli_fetch_assoc($sql);
+                        }
                         ?>
                         <div class="content">
                               <img src="php/images/<?php echo $row['img']; ?>" alt="">
@@ -25,7 +25,7 @@ if (!isset($_SESSION['unique_id'])) {
                                     <p><?php echo $row['status']; ?></p>
                               </div>
                         </div>
-                        <a href="php/logout.php?logout_id=<?=$row['unique_id'] ?>" class="logout">Log out</a>
+                        <a href="php/logout.php?logout_id=<?= $row['unique_id'] ?>" class="logout">Log out</a>
                   </header>
                   <div class="search">
                         <span class="text"> Select an user to start chat</span>
@@ -33,10 +33,11 @@ if (!isset($_SESSION['unique_id'])) {
                         <button><i class="fas fa-search"></i></button>
                   </div>
                   <div class="users-list">
-                        
+
                   </div>
             </section>
       </div>
+      <?php include_once "NetworkCheck.php"; ?>
 
       <script src="javascript/users.js"></script>
 </body>

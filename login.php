@@ -1,8 +1,8 @@
 <?php
-      session_start();
-      if (isset($_SESSION['unique_id'])) {
-            header("location: users.php");
-      } 
+session_start();
+if (isset($_SESSION['unique_id'])) {
+      header("location: users.php");
+}
 ?>
 <?php include_once "header.php"; ?>
 
@@ -28,7 +28,11 @@
                   <div class="link">Not yet signed up? <a href="index.php">Signup now</a></div>
             </section>
       </div>
+      
+      <?php include_once "header.php"; ?>
+      <?php include_once "NetworkCheck.php"; ?>
 
+      
       <script src="javascript/pass-show-hide.js"></script>
       <script src="javascript/login.js"></script>
 </body>
