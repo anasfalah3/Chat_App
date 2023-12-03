@@ -1,4 +1,4 @@
-.notification-Field{
+#notification-Field{
       position: absolute;
       top: 80vh;
       left: 20px;
@@ -15,7 +15,7 @@
             transform: translateX(20px);
       }
 }
-.notification-Field.hide{
+#notification-Field.hide{
       animation: hide_toast 1s ease forwards;
 }
 @keyframes hide_toast {
@@ -31,25 +31,25 @@
             transform: translateX(-100%);
       }
 }
-.notification-Field .toast{
+#notification-Field #toast{
       background: #fff;
       padding: 20px 15px 20px 20px;
       border-radius: 10px;
       width: 430px;
-      display: flex;
+      display: none;
       align-items: center;
       border-left: 5px solid #2ecc71;
       justify-content: space-between;
       box-shadow: 1px 7px 14px -5px rgba(0, 0, 0, 0.15);
 }
-.notification-Field .toast.offline{
+#notification-Field #toast.offline{
       border-color: #ccc;
 }
-.toast .content{
+#toast #content{
       display: flex;
       align-items: center;
 }
-.toast .content .icon{
+#toast #content #icon{
       font-size: 25px;
       background: #2ecc71;
       height: 50px;
@@ -60,20 +60,20 @@
       color: #fff;
 
 }
-.toast.offline .content .icon{
+#toast.offline #content #icon{
       background: #ccc;
 }
-.toast .content .details{
+#toast #content #details{
       margin-left: 15px;
 }
-.content .details span{
+#content #details #span{
       font-size: 20px;
       font-weight: 500;
 }
-.content .details p{
+#content #details #p{
       color: #878787; 
 }
-.toast .close-icon{
+#toast #close-icon{
       background: #f2f2f2;
       height: 40px;
       width: 40px;

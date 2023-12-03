@@ -1,59 +1,48 @@
-// selecting all required elements
+let notification = document.getElementById("notification-Field");
+let toast = document.getElementById("toast");
+let wifiIcon = document.getElementById("icon");
+let title = document.getElementById("span");
+let subTitle = document.getElementById("p");
+let closeIcone = document.getElementById("close-icon");
 
-let notification = document.querySelector(".notification-Field")
-let toast = notification.querySelector(".toast");
-let wifiIcon = notification.querySelector(".icon");
-let title = notification.querySelector("span");
-let subTitle = notification.querySelector("p");
-let closeIcone = notification.querySelector(".close-icon");
-
-window.onload = () => {
-  function ajax() {
-    let xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
-    xhr.onload = () => {
-      //once ajax loaded
-      if (xhr.status == 200 && xhr.status < 300) {
-        online();
-      } else {
-        offline();
-      }
-    };
-    xhr.onerror = () => {
-      // if the passed url is incorrect or returning 404
-      offline(); //calling offline function
-    };
-    xhr.send();
+// Function to check network status
+async function checkNetworkStatus() {
+  try {
+    let response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    if (!response.ok) {
+      // Status is not OK, user is offline
+      offline();
+    }
+  } catch (error) {
+    // Error occurred, user is offline
+    offline();
   }
+}
 
-  function online() {
-    //user getting data then he is online
-    toast.classList.remove("offline");
-    title.innerText = "You are online now";
-    subTitle.innerText = "Hurray! Internet is connected.";
-    wifiIcon.innerHTML = '<i class="uil uil-wifi"></i>';
+function offline() {
+  // Online status changed from online to offline
+  notification.classList.remove("hide");
+  toast.style.display = "flex"
+  toast.classList.add("offline");
+  title.innerText = "You're offline now";
+  subTitle.innerText = "Opps! Internet is disconnected.";
+  wifiIcon.innerHTML = '<i class="uil uil-wifi-slash"></i>';
 
-    closeIcone.onclick = () => {
-      notification.classList.add("hide");
-    };
+  closeIcone.onclick = () => {
+    notification.classList.add("hide");
+  };
 
-    setTimeout(() => {
-      notification.classList.add("hide");
-    }, 5000);
+  setTimeout(() => {
+    notification.classList.add("hide");
+  }, 5000);
+}
+
+// Check network status on page load
+checkNetworkStatus();
+
+// Set up an event listener for page visibility change
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") {
+    // Page is visible, no need to check network status again
   }
-
-
-  function offline() {
-    // creating offline function
-    notification.classList.remove("hide");
-    toast.classList.add("offline");
-    title.innerText = "You're offline now";
-    subTitle.innerText = "Opps! Internet is disconnected.";
-    wifiIcon.innerHTML = '<i class="uil uil-wifi-slash"></i>';
-  }
-
-  
-  setInterval(() => {
-    ajax();
-  }, 100);
-};
+});
