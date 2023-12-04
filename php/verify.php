@@ -9,7 +9,8 @@ if (isset($_GET['email']) && isset($_GET['v_code'])) {
                   if ($result_fetch['is_verified'] == 0) {
                         $update = "UPDATE users SET is_verified = 1 WHERE email = '{$result_fetch["email"]}'";
                         if (mysqli_query($conn,$update)) {
-                              echo "Email verification successful";
+                              header("Location: ../login.php?validation=true");
+                              exit();
                         }
                   }else {
                         echo "Email already registred";

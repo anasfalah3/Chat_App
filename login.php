@@ -12,6 +12,13 @@ if (isset($_SESSION['unique_id'])) {
                   <header>Realtime Chat App</header>
                   <form action="#">
                         <div class="error-txt"></div>
+                        <?php
+                        if (isset($_GET['validation']) && $_GET['validation'] == "true") {
+                              echo "<div id='validate-txt' style='color: #12731c;background: #84c78b8a;padding: 8px 10px;text-align: center;border-radius: 5px;margin-bottom: 10px;border: 1px solid #84c78b;display: block;'>";
+                              echo "Your Email has been validate!";
+                              echo "</div>";
+                        }
+                        ?>
                         <div class="field input">
                               <label for="">Email Address</label>
                               <input type="text" name="email" placeholder="Enter your email">
@@ -28,7 +35,7 @@ if (isset($_SESSION['unique_id'])) {
                   <div class="link">Not yet signed up? <a href="index.php">Signup now</a></div>
             </section>
       </div>
-      
+
       <?php include_once "NetworkCheck.php"; ?>
 
       <script src="javascript/pass-show-hide.js"></script>
