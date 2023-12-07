@@ -46,7 +46,7 @@ if (!empty($email)) {
 
             //Recipients
             $mail->setFrom('example@example.com', 'example');
-            $mail->addAddress($_POST["email"]); //Add a recipient
+            $mail->addAddress(trim($_POST["email"])); //Add a recipient
 
             //Content
             $mail->isHTML(true);                //Set email format to HTML
@@ -62,10 +62,7 @@ if (!empty($email)) {
             if (!$mail->send()) {
                   echo " Invalid Email ";
             } else {
-                  echo "Email send out !  Kindly check your email inbox.";
+                  echo "success";
             }
       }
 }
-
-
-?>
