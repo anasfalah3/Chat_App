@@ -10,7 +10,7 @@ if (!empty($NewPassword)) {
       
       if ($Email) {
             mysqli_query($conn, "UPDATE users SET password='$NewPassword' WHERE email='$Email'");
-            echo "your password has been succesful reset";
+            echo "success";
       } else {
             echo "Please try again";
       }

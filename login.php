@@ -8,10 +8,23 @@ if (isset($_SESSION['unique_id'])) {
 
 <body>
       <div class="wrapper">
+            <div class="loader-wrapper">
+                  <div class="dot-spinner">
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                  </div>
+            </div>
             <section class="form login">
                   <header>Realtime Chat App</header>
                   <form action="#">
                         <div class="error-txt"></div>
+                        <div class="success-txt"></div>
                         <?php
                         if (isset($_GET['validation']) && $_GET['validation'] == "true") {
                               echo "<div id='validate-txt' style='color: #12731c;background: #84c78b8a;padding: 8px 10px;text-align: center;border-radius: 5px;margin-bottom: 10px;border: 1px solid #84c78b;display: block;'>";
@@ -45,6 +58,12 @@ if (isset($_SESSION['unique_id'])) {
 
       <script src="javascript/pass-show-hide.js"></script>
       <script src="javascript/login.js"></script>
+      <script src="javascript/jquery.min.js"></script>
+      <script>
+            $(window).on("load", function() {
+                  $(".loader-wrapper").fadeOut("slow");
+            });
+      </script>
 </body>
 
 </html>

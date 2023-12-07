@@ -8,6 +8,18 @@ if (isset($_SESSION['unique_id'])) {
 
 <body>
       <div class="wrapper">
+            <div class="loader-wrapper">
+                  <div class="dot-spinner">
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                  </div>
+            </div>
             <section class="form signup">
                   <header>Realtime Chat App</header>
                   <form action="#" enctype="multipart/form-data" autocomplete="off">
@@ -46,6 +58,12 @@ if (isset($_SESSION['unique_id'])) {
 
       <script src="javascript/pass-show-hide.js"></script>
       <script src="javascript/signup.js"></script>
+      <script src="javascript/jquery.min.js"></script>
+      <script>
+            $(window).on("load", function() {
+                  $(".loader-wrapper").fadeOut("slow");
+            });
+      </script>
 </body>
 
 </html>

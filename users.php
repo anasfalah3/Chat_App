@@ -9,6 +9,18 @@ if (!isset($_SESSION['unique_id'])) {
 
 <body>
       <div class="wrapper">
+            <div class="loader-wrapper">
+                  <div class="dot-spinner">
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                  </div>
+            </div>
             <section class="users">
                   <header>
                         <?php
@@ -40,6 +52,12 @@ if (!isset($_SESSION['unique_id'])) {
       <?php include_once "NetworkCheck.php"; ?>
 
       <script src="javascript/users.js"></script>
+      <script src="javascript/jquery.min.js"></script>
+      <script>
+            $(window).on("load", function() {
+                  $(".loader-wrapper").fadeOut("slow");
+            });
+      </script>
 </body>
 
 </html>
