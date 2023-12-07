@@ -1,10 +1,10 @@
 <?php
 session_start();
 include_once "config.php";
-$fname = mysqli_real_escape_string($conn, $_POST['fname']);
-$lname = mysqli_real_escape_string($conn, $_POST['lname']);
-$email = mysqli_real_escape_string($conn, $_POST['email']);
-$password = mysqli_real_escape_string($conn, $_POST['password']);
+$fname = trim(mysqli_real_escape_string($conn, $_POST['fname']));
+$lname = trim(mysqli_real_escape_string($conn, $_POST['lname']));
+$email = trim(mysqli_real_escape_string($conn, $_POST['email']));
+$password = trim(mysqli_real_escape_string($conn, $_POST['password']));
 
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
@@ -24,7 +24,6 @@ function sendmail($email, $v_code)
 
       try {
             //Server settings
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.example.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -32,14 +31,14 @@ function sendmail($email, $v_code)
             $mail->Password   = 'secret';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
+            
             //Recipients
             $mail->setFrom('user@example.com', 'Mailer');
             $mail->addAddress($email);     //Add a recipient
 
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
-            $mail->Subject = 'Email verification from chatApp';
+            $mail->Subject = 'Email verification from ChatApp';
             $mail->Body    = "Thanks for the registration!
             click the linck below to verify your email adress
             <a href='http://localhost/ChatApp/php/verify.php?email=$email&v_code=$v_code'>Verify now</a>";
@@ -83,7 +82,7 @@ if (!empty($fname) && !empty($lname) && !empty($email) && !empty($password)) {
 
                                     $sql2 = mysqli_query($conn, "INSERT INTO users (unique_id, fname, lname, email, password, img, status, verification_code, is_verified)
                                                                         VALUES ('{$random_id}', '{$fname}','{$lname}','{$email}','{$password}','{$new_img_name}','{$status}','{$v_code}','0')");
-                                    if ($sql2 && sendmail($email, $v_code)) { //if these data inserted
+                                    if ($sql2 && sendmail($email,$v_code)) { //if these data inserted
                                           $sql3 = mysqli_query($conn, "SELECT *FROM users WHERE email = '{$email}'");
                                           if (mysqli_num_rows($sql3) > 0) {
                                                 $row = mysqli_fetch_assoc($sql3);
@@ -91,7 +90,7 @@ if (!empty($fname) && !empty($lname) && !empty($email) && !empty($password)) {
                                                 echo "success";
                                           }
                                     } else {
-                                          echo "Somthing went wrong!";
+                                          echo "we sent a verification link to you email please check it!";
                                     }
                               }
                         } else {
