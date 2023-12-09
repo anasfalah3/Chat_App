@@ -43,6 +43,15 @@ body {
   border: 1px solid #f5c6cb;
   display: none;
 }
+.form form .success-txt {
+  color: #12731c;
+  background: #84c78b8a;
+  padding: 8px 10px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #84c78b;
+}
 .form form .name-details {
   display: flex; /* (flex) */
 }
@@ -317,4 +326,60 @@ form .name-details .field:last-child {
   font-size: 19px;
   cursor: pointer;
   border-radius: 0 5px 5px 0;
+}
+.upload {
+  width: 140px;
+  position: relative;
+  margin: auto;
+  text-align: center;
+}
+
+.upload img {
+  border-radius: 50%;
+  border: 8px solid #DCDCDC;
+  width: 125px;
+  height: 125px;
+}
+
+.upload .rightRound {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #00B4FF;
+  width: 32px;
+  height: 32px;
+  line-height: 33px;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.upload .leftRound {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: red;
+  width: 32px;
+  height: 32px;
+  line-height: 33px;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.upload .fa {
+  color: white;
+}
+
+.upload input {
+  position: absolute;
+  transform: scale(2);
+  opacity: 0;
+}
+
+.upload input::-webkit-file-upload-button,
+.upload input[type=submit] {
+  cursor: pointer;
 }

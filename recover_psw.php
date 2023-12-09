@@ -1,17 +1,4 @@
 <?php include_once "header.php"; ?>
-<style>
-      .form form .success-txt {
-            color: #12731c;
-            background: #84c78b8a;
-            padding: 8px 10px;
-            text-align: center;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            border: 1px solid #84c78b;
-            display: none;
-      }
-</style>
-
 <body>
 
       <div class="wrapper">
