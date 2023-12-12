@@ -12,20 +12,34 @@
                     OR  (outgoing_msg_id = {$incoming_id} AND incoming_msg_id = {$outgoing_id}) ORDER BY msg_id ASC";
             $query = mysqli_query($conn, $sql);
             if (mysqli_num_rows($query) > 0) {
-                  while($row = mysqli_fetch_assoc($query)){
-                        if($row['outgoing_msg_id'] === $outgoing_id) { // if this is equal to then he is msg sender
+                  while ($row = mysqli_fetch_assoc($query)) {
+                        if ($row['outgoing_msg_id'] === $outgoing_id) {
                               $output .= '<div class="chat outgoing">
-                                                <div class="details">
-                                                      <p>'. $row['msg'].'</p>
-                                                </div>
-                                          </div>';
-                        }else{ // he is a msg reciver
+                                                <div class="details">';
+                        // Conditionally display the message paragraph
+                        if (!empty($row['msg'])) {
+                              $output .= '<p>'.htmlspecialchars($row['msg']).'</p>';
+                        }
+                        // Conditionally display the image
+                        if (!empty($row['files'])) {
+                              $output .= '<img src="php/files/'.$row['files'].'" alt="">';
+                        }
+                        $output .= '</div>
+                                    </div>';
+                        } else {
                               $output .= '<div class="chat incoming">
-                                                <img src="php/images/'.$row['img'].'" alt="">
-                                                <div class="details">
-                                                      <p>'.$row['msg'].'</p>
-                                                </div>
-                                          </div>';
+                                                <img src="php/images/'.htmlspecialchars($row['img']).'" alt="">
+                                                <div class="details">';
+                        // Conditionally display the message paragraph
+                        if (!empty($row['msg'])) {
+                              $output .= '<p>'.htmlspecialchars($row['msg']).'</p>';
+                        }
+                        // Conditionally display the image
+                        if (!empty($row['files'])) {
+                              $output .= '<img src="php/files/'.$row['files'].'" alt="">';
+                        }
+                        $output .= '</div>
+                                    </div>';
                         }
                   }
                   echo $output;

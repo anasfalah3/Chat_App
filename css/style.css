@@ -285,6 +285,11 @@ form .name-details .field:last-child {
   color: #fff;
   border-radius: 18px 18px 0 18px;
 }
+.outgoing .details img {
+  margin-top: 5px;
+  width: 200px;
+  border-radius: 18px 18px 0 18px;
+}
 .chat-box .incoming {
   display: flex;
   align-items: flex-end;
@@ -302,6 +307,11 @@ form .name-details .field:last-child {
   color: #333;
   background: #fff;
   border-radius: 18px 18px 18px 0;
+}
+.incoming .details img {
+  margin-top: 5px;
+  width: 200px;
+  border-radius: 18px 18px 0 18px;
 }
 .chat-area .typing-area {
   padding: 18px 30px;
