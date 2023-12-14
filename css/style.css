@@ -292,7 +292,7 @@ form .name-details .field:last-child {
 }
 .chat-box .incoming {
   display: flex;
-  align-items: flex-end;
+  align-items: self-start;
 }
 .chat-box .incoming img {
   height: 35px;
@@ -310,7 +310,8 @@ form .name-details .field:last-child {
 }
 .incoming .details img {
   margin-top: 5px;
-  width: 200px;
+  width: auto;
+  height: 150px;
   border-radius: 18px 18px 0 18px;
 }
 .chat-area .typing-area {
