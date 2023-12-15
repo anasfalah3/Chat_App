@@ -22,6 +22,8 @@ while ($row = mysqli_fetch_assoc($sql)) {
 
     // Set appropriate styling for the message
     $msg = ($isFileMessage) ? 'Picture' : ($row2 !== null ? $row2['msg'] : 'No message available');
+    // Trim the message if it's longer than 28 characters
+    $msg = strlen($msg) > 25 ? substr($msg, 0, 28) . '...' : $msg;
     $msgStyle = $isIncoming ? 'font-weight: bold;color:black;' : '';
 
     $you = ($row2 !== null && isset($row2['outgoing_msg_id']) && $outgoing_id == $row2['outgoing_msg_id']) ? "You: " : "";
