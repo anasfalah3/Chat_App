@@ -338,6 +338,46 @@ form .name-details .field:last-child {
   cursor: pointer;
   border-radius: 0 5px 5px 0;
 }
+.file-group{
+  position: relative;
+  width: auto;
+}
+.file-input{
+  width: 0;
+  height: 0;
+  opacity: 0;
+  z-index: -1;
+  display: none;
+}
+.file-label{
+  position: absolute;
+  right: 0px;
+  top: -3px;
+  display: inline-block;
+  padding: 2px 4px;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #229144;
+  cursor: pointer;
+}
+.file-label figure{
+  width: 50px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    
+}
+.file-label i {
+  font-size: 1em;
+  color: #333;
+  transition: 0.3s ease;
+}
+figure:hover i{
+  color: #111111;
+  transform: scale(1.05);
+}
+/* update profile area */
 .upload {
   width: 140px;
   position: relative;

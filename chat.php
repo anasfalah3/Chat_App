@@ -34,7 +34,15 @@ if (!isset($_SESSION['unique_id'])) {
                         <input type="text" name="outgoing_id" value="<?php echo $_SESSION['unique_id'] ?>" hidden>
                         <input type="text" name="incoming_id" value="<?php echo $user_id; ?>" hidden>
                         <input type="text" name="message" class="input-field" placeholder="Type a message here...">
-                        <input type="file" name="image">
+                        <div class="file-group">
+                              <input type="file" name="image" id="file" class="file-input">
+                              <label for="file" class="file-label">
+                                    <figure>
+                                          <i class="fa fa-upload"></i>
+                                    </figure>
+                              </label>
+
+                        </div>
                         <button><i class="fab fa-telegram-plane"></i></button>
                   </form>
             </section>
@@ -42,6 +50,7 @@ if (!isset($_SESSION['unique_id'])) {
       <?php include_once "NetworkCheck.php"; ?>
 
       <script src="javascript/chat.js"></script>
+
 </body>
 
 </html>
